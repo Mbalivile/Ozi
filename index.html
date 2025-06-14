@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Open when you miss him ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: url("https://s3.amazonaws.com/shecodesio-production/uploads/files/000/168/125/original/1000038091.jpg?1749900317") no-repeat center center fixed;
+background-size: cover;
+
+      font-family: 'Georgia', serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      color: #6a3747;  /* warm brownish tone */
+    }
+
+    .heart {
+      font-size: 90px;
+      animation: pulse 2.5s infinite;
+      color: #b74160; /* deeper pink-red */
+      text-shadow: 0 0 15px #f8a1b4;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 0.8; }
+      50% { transform: scale(1.2); opacity: 1; }
+      100% { transform: scale(1); opacity: 0.8; }
+    }
+
+    .message {
+      max-width: 90%;
+      font-size: 22px;
+      color: #5c2a36;
+      margin-top: 30px;
+      white-space: pre-line;
+      border: 1px solid #e6b7c3;
+      background: #fff0f3cc;
+      padding: 25px;
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(179, 104, 123, 0.3);
+    }
+
+    .quote {
+      font-style: italic;
+      margin-top: 35px;
+      color: greenyellow;
+      font-size: 18px;
+      text-shadow: 0 0 3px #f4b6c2;
+    }
+
+    .music-button {
+      margin-top: 25px;
+      padding: 12px 30px;
+      font-size: 18px;
+      border: none;
+      border-radius: 25px;
+      background-color: #d46a7e;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 5px 12px rgba(212, 106, 126, 0.6);
+      transition: background-color 0.3s ease;
+    }
+
+    .music-button:hover {
+      background-color: #bf5970;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="heart">💖</div>
+
+  <div class="message" id="typedMessage"></div>
+
+  <div class="quote">"If Ozi can bring so much impact in myself,  imagine what his dad does❤️."</div>
+
+  <audio id="bgMusic" loop>
+  <source src="audio/knows.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+
+  <button class="music-button" onclick="playMusic()">🎵 Play Music</button>
+
+  <script>
+    const message = `I know we’re both hurting, and maybe you don’t know what to say right now.
+But I need you.
+I miss the way you hold space for me.
+I still love you, Nhlane.`;
+
+    let index = 0;
+    const typed = document.getElementById('typedMessage');
+
+    function typeLetter() {
+      if (index < message.length) {
+        typed.textContent += message.charAt(index);
+        index++;
+        setTimeout(typeLetter, 50);
+      }
+    }
+
+    typeLetter();
+
+    function playMusic() {
+      const music = document.getElementById('bgMusic');
+      music.play().then(() => {
+        music.muted = false;
+        console.log("Music playing");
+      }).catch(err => {
+        alert("Music cannot play automatically, please tap the button again.");
+        console.error("Music play failed:", err);
+      });
+    }
+  </script>
+
+</body>
+</html>
